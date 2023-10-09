@@ -1,0 +1,9 @@
+[package]
+id = "g6xdgq2cle4pk7634b2awgalm7g2u2ag"
+name = "ghoul_frenzy"
+version = "0.0.1"
+content = { type = "Playable" }
+ambient_version = "0.3.1-nightly-2023-10-09"
+
+[dependencies]
+dead_meets_lead_content = { deployment = "2wTJ0qyUc6i9ggd25geRAC" }
