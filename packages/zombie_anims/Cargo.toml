@@ -1,8 +1,5 @@
-[workspace]
-members = ["packages/*"]
-
 [package]
-name = "ghoul_frenzy"
+name = "zombie_anims"
 
 edition = "2021"
 publish = false
@@ -12,14 +9,9 @@ version = "0.0.1"
 ambient_api = { git = "https://github.com/AmbientRun/Ambient.git", tag = "v0.3.1-nightly-2023-10-09" }
 
 [[bin]]
-name = "ghoul_frenzy_client"
+name = "zombie_anims_client"
 path = "src/client.rs"
 required-features = ["client"]
-
-[[bin]]
-name = "ghoul_frenzy_server"
-path = "src/server.rs"
-required-features = ["server"]
 
 [features]
 client = ["ambient_api/client"]

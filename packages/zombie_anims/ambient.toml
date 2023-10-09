@@ -1,6 +1,6 @@
 [package]
-id = "g6xdgq2cle4pk7634b2awgalm7g2u2ag"
-name = "ghoul_frenzy"
+id = "l7qgyikl7wwmkw4zflabf2pgak3qdro7"
+name = "zombie_anims"
 version = "0.0.1"
 content = { type = "Playable" }
 ambient_version = "0.3.1-nightly-2023-10-09"
@@ -9,4 +9,6 @@ ambient_version = "0.3.1-nightly-2023-10-09"
 dead_meets_lead_content = { deployment = "2wTJ0qyUc6i9ggd25geRAC" }
 unit_schema = { deployment = "5HexbdJAJVFzPjJz2bDiEp" }
 game_object = { deployment = "16ddBMQjNZ8gdzCeAWQFEE" }
-zombie_anims = { path = "packages/zombie_anims" }
+
+[components]
+zombie_anims = { type = "EntityId", attributes = ["Networked"] }
