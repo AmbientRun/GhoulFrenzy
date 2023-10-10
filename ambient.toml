@@ -10,3 +10,11 @@ dead_meets_lead_content = { deployment = "2wTJ0qyUc6i9ggd25geRAC" }
 unit_schema = { deployment = "5HexbdJAJVFzPjJz2bDiEp" }
 game_object = { deployment = "16ddBMQjNZ8gdzCeAWQFEE" }
 zombie_anims = { path = "packages/zombie_anims" }
+# character_movement = { deployment = "1TOaqft2tSmWBFd7kABlos" }
+character_movement = { path = "../ambient/guest/rust/packages/std/character_movement" }
+
+[messages]
+Click = { fields = { orig = "Vec3", dir = "Vec3" } }
+
+[components]
+run_to = { type = "Vec3", attributes = ["Networked", "Debuggable"] }
