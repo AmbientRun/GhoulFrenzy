@@ -6,17 +6,19 @@ use ambient_api::{
         camera::concepts::{
             PerspectiveInfiniteReverseCamera, PerspectiveInfiniteReverseCameraOptional,
         },
+        hierarchy::components::parent,
         model::components::model_from_url,
         physics::components::plane_collider,
         player::components::is_player,
         prefab::components::prefab_from_url,
         primitives::components::quad,
+        rendering::components::pbr_material_from_url,
         transform::{
-            components::{local_to_world, lookat_target, rotation, translation},
+            components::{local_to_world, lookat_target, rotation, scale, translation},
             concepts::{Transformable, TransformableOptional},
         },
     },
-    entity::{add_component, add_components, remove_component, set_component},
+    entity::{add_child, add_component, add_components, remove_component, set_component},
     prelude::*,
 };
 use packages::{
@@ -43,11 +45,26 @@ pub fn main() {
     .with(lookat_target(), vec3(0., 0., 0.))
     .spawn();
 
-    Entity::new()
+    let ground = Entity::new()
         .with(local_to_world(), Mat4::IDENTITY)
         .with(plane_collider(), ())
-        .with(quad(), ())
         .spawn();
+
+    for y in 0..100 {
+        for x in 0..100 {
+            Entity::new()
+                .with(local_to_world(), Mat4::IDENTITY)
+                .with(parent(), ground)
+                .with(translation(), ivec3(x, y, 0).as_vec3() - vec3(50., 50., 0.))
+                .with(quad(), ())
+                // .with(scale(), Vec3::ONE * 100.)
+                .with(
+                    pbr_material_from_url(),
+                    assets::url("pipeline.toml/114/mat.json"),
+                )
+                .spawn();
+        }
+    }
 
     spawn_query(is_player()).bind(|players| {
         for (id, _) in players {
