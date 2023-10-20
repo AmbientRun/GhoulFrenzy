@@ -95,6 +95,7 @@ pub fn main() {
             let delta = target - pos;
             if delta.length() < 0.1 {
                 remove_component(id, run_to());
+                set_component(id, run_direction(), Vec2::ZERO);
             } else {
                 let dir = delta.normalize();
                 let rot = dir.y.atan2(dir.x);
