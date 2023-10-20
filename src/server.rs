@@ -6,6 +6,7 @@ use ambient_api::{
         camera::concepts::{
             PerspectiveInfiniteReverseCamera, PerspectiveInfiniteReverseCameraOptional,
         },
+        model::components::model_from_url,
         physics::components::plane_collider,
         player::components::is_player,
         prefab::components::prefab_from_url,
@@ -15,16 +16,15 @@ use ambient_api::{
             concepts::{Transformable, TransformableOptional},
         },
     },
-    entity::{add_component, add_components, set_component},
+    entity::{add_component, add_components, remove_component, set_component},
     prelude::*,
 };
 use packages::{
+    character_movement::concepts::{CharacterMovement, CharacterMovementOptional},
     dead_meets_lead_content::assets,
     game_object::components::health,
     this::{components::run_to, messages::Click},
-    unit_schema::components::{
-        is_on_ground, jumping, run_direction, running, speed, vertical_velocity,
-    },
+    unit::components::{is_on_ground, jumping, run_direction, running, speed, vertical_velocity},
     zombie_anims::components::zombie_anims,
 };
 
@@ -55,23 +55,23 @@ pub fn main() {
                 .with_merge(Transformable {
                     local_to_world: Default::default(),
                     optional: TransformableOptional {
-                        translation: Some(Vec3::Z * 10.),
+                        translation: Some(Vec3::Z * 1.),
                         rotation: Some(Quat::IDENTITY),
                         scale: None,
                     },
                 })
-                .with(
-                    prefab_from_url(),
-                    assets::url("Data/Models/Units/Zombie1.x"),
-                )
+                .with(model_from_url(), assets::url("Data/Models/Units/Zombie1.x"))
                 .with(zombie_anims(), EntityId::null())
-                .with(run_direction(), Vec2::ZERO)
-                .with(health(), 100.)
-                // .with_merge(CharacterMovment {})
-                .with(vertical_velocity(), 0.)
-                .with(running(), false)
-                .with(jumping(), false)
-                .with(is_on_ground(), false);
+                .with_merge(CharacterMovement {
+                    // optional: CharacterMovementOptional {
+                    //     run_speed_multiplier: Some(1.),
+                    //     speed: Some(1.),
+                    //     strafe_speed_multiplier: Some(1.),
+                    //     air_speed_multiplier: Some(1.),
+                    // },
+                    ..CharacterMovement::suggested()
+                })
+                .with(health(), 100.);
             add_components(id, zombie);
 
             // let idle = PlayClipFromUrlNodeRef::new(assets::url(
@@ -92,10 +92,15 @@ pub fn main() {
 
     query((run_to(), translation())).each_frame(|entities| {
         for (id, (target, pos)) in entities {
-            let dir = (target - pos).normalize();
-            let rot = dir.y.atan2(dir.x);
-            set_component(id, run_direction(), Vec2::X);
-            set_component(id, rotation(), Quat::from_rotation_z(rot));
+            let delta = target - pos;
+            if delta.length() < 0.1 {
+                remove_component(id, run_to());
+            } else {
+                let dir = delta.normalize();
+                let rot = dir.y.atan2(dir.x);
+                set_component(id, run_direction(), Vec2::X);
+                set_component(id, rotation(), Quat::from_rotation_z(rot));
+            }
         }
     });
 }

@@ -5,7 +5,7 @@ use ambient_api::{
 };
 use packages::{
     dead_meets_lead_content::assets, game_object::components::health,
-    this::components::zombie_anims, unit_schema::components::run_direction,
+    this::components::zombie_anims, unit::components::run_direction,
 };
 use std::{
     collections::HashMap,

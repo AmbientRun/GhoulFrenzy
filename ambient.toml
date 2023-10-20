@@ -3,15 +3,18 @@ id = "g6xdgq2cle4pk7634b2awgalm7g2u2ag"
 name = "ghoul_frenzy"
 version = "0.0.1"
 content = { type = "Playable" }
-ambient_version = "0.3.1-nightly-2023-10-09"
+ambient_version = "0.3.1-nightly-2023-10-20"
 
 [dependencies]
 dead_meets_lead_content = { deployment = "2wTJ0qyUc6i9ggd25geRAC" }
-unit_schema = { deployment = "5HexbdJAJVFzPjJz2bDiEp" }
-game_object = { deployment = "16ddBMQjNZ8gdzCeAWQFEE" }
 zombie_anims = { path = "packages/zombie_anims" }
-# character_movement = { deployment = "1TOaqft2tSmWBFd7kABlos" }
-character_movement = { path = "../ambient/guest/rust/packages/std/character_movement" }
+unit = { deployment = "1vBEs82ZnSYQEuJjsT0eYh" }
+game_object = { deployment = "77lZ5MG77Hc0GOE5sXU3KG" }
+character_movement = { deployment = "1X5O7WXHcGDy2o9WUuRfkN" }
+
+# game_object = { path = "../ambient/guest/rust/packages/schemas/game_object" }
+# unit_schema = { path = "../ambient/guest/rust/packages/schemas/unit" }
+# character_movement = { path = "../ambient/guest/rust/packages/std/character_movement" }
 
 [messages]
 Click = { fields = { orig = "Vec3", dir = "Vec3" } }

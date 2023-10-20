@@ -22,11 +22,29 @@ name = "ambient_api"
 version = "0.3.1-nightly-2023-10-09"
 source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-09#0d4c2c9b7b10d700aced40b22e9551d952dedfb2"
 dependencies = [
- "ambient_api_core",
- "ambient_cb",
- "ambient_editor_derive",
- "ambient_element",
- "ambient_ui",
+ "ambient_api_core 0.3.1-nightly-2023-10-09",
+ "ambient_cb 0.3.1-nightly-2023-10-09",
+ "ambient_editor_derive 0.3.1-nightly-2023-10-09",
+ "ambient_element 0.3.1-nightly-2023-10-09",
+ "ambient_ui 0.3.1-nightly-2023-10-09",
+ "anyhow",
+ "futures",
+ "glam",
+ "once_cell",
+ "ordered-float",
+ "rand",
+]
+
+[[package]]
+name = "ambient_api"
+version = "0.3.1-nightly-2023-10-20"
+source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-20#3ae08ca0aa789cfebaa0f4ebef4fe0753652d329"
+dependencies = [
+ "ambient_api_core 0.3.1-nightly-2023-10-20",
+ "ambient_cb 0.3.1-nightly-2023-10-20",
+ "ambient_editor_derive 0.3.1-nightly-2023-10-20",
+ "ambient_element 0.3.1-nightly-2023-10-20",
+ "ambient_ui 0.3.1-nightly-2023-10-20",
  "anyhow",
  "futures",
  "glam",
@@ -40,9 +58,32 @@ name = "ambient_api_core"
 version = "0.3.1-nightly-2023-10-09"
 source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-09#0d4c2c9b7b10d700aced40b22e9551d952dedfb2"
 dependencies = [
- "ambient_api_macros",
- "ambient_package_rt",
- "ambient_shared_types",
+ "ambient_api_macros 0.3.1-nightly-2023-10-09",
+ "ambient_package_rt 0.3.1-nightly-2023-10-09",
+ "ambient_shared_types 0.3.1-nightly-2023-10-09",
+ "anyhow",
+ "byteorder",
+ "data-encoding",
+ "futures",
+ "glam",
+ "indexmap 2.0.2",
+ "once_cell",
+ "paste",
+ "rand",
+ "serde",
+ "thiserror",
+ "ulid",
+ "wit-bindgen",
+]
+
+[[package]]
+name = "ambient_api_core"
+version = "0.3.1-nightly-2023-10-20"
+source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-20#3ae08ca0aa789cfebaa0f4ebef4fe0753652d329"
+dependencies = [
+ "ambient_api_macros 0.3.1-nightly-2023-10-20",
+ "ambient_package_rt 0.3.1-nightly-2023-10-20",
+ "ambient_shared_types 0.3.1-nightly-2023-10-20",
  "anyhow",
  "byteorder",
  "data-encoding",
@@ -63,7 +104,20 @@ name = "ambient_api_macros"
 version = "0.3.1-nightly-2023-10-09"
 source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-09#0d4c2c9b7b10d700aced40b22e9551d952dedfb2"
 dependencies = [
- "ambient_package_macro_common",
+ "ambient_package_macro_common 0.3.1-nightly-2023-10-09",
+ "anyhow",
+ "proc-macro2",
+ "quote",
+ "syn 1.0.109",
+ "tokio",
+]
+
+[[package]]
+name = "ambient_api_macros"
+version = "0.3.1-nightly-2023-10-20"
+source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-20#3ae08ca0aa789cfebaa0f4ebef4fe0753652d329"
+dependencies = [
+ "ambient_package_macro_common 0.3.1-nightly-2023-10-20",
  "anyhow",
  "proc-macro2",
  "quote",
@@ -77,6 +131,11 @@ version = "0.3.1-nightly-2023-10-09"
 source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-09#0d4c2c9b7b10d700aced40b22e9551d952dedfb2"
 
 [[package]]
+name = "ambient_cb"
+version = "0.3.1-nightly-2023-10-20"
+source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-20#3ae08ca0aa789cfebaa0f4ebef4fe0753652d329"
+
+[[package]]
 name = "ambient_color"
 version = "0.3.1-nightly-2023-10-09"
 source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-09#0d4c2c9b7b10d700aced40b22e9551d952dedfb2"
@@ -88,9 +147,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "ambient_color"
+version = "0.3.1-nightly-2023-10-20"
+source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-20#3ae08ca0aa789cfebaa0f4ebef4fe0753652d329"
+dependencies = [
+ "glam",
+ "hex",
+ "serde",
+ "thiserror",
+]
+
+[[package]]
 name = "ambient_dirs"
 version = "0.3.1-nightly-2023-10-09"
 source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-09#0d4c2c9b7b10d700aced40b22e9551d952dedfb2"
+dependencies = [
+ "directories",
+]
+
+[[package]]
+name = "ambient_dirs"
+version = "0.3.1-nightly-2023-10-20"
+source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-20#3ae08ca0aa789cfebaa0f4ebef4fe0753652d329"
 dependencies = [
  "directories",
 ]
@@ -108,14 +186,45 @@ dependencies = [
 ]
 
 [[package]]
+name = "ambient_editor_derive"
+version = "0.3.1-nightly-2023-10-20"
+source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-20#3ae08ca0aa789cfebaa0f4ebef4fe0753652d329"
+dependencies = [
+ "pretty_assertions",
+ "proc-macro-crate",
+ "proc-macro2",
+ "quote",
+ "syn 1.0.109",
+]
+
+[[package]]
 name = "ambient_element"
 version = "0.3.1-nightly-2023-10-09"
 source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-09#0d4c2c9b7b10d700aced40b22e9551d952dedfb2"
 dependencies = [
- "ambient_cb",
- "ambient_element_component",
- "ambient_friendly_id",
- "ambient_guest_bridge",
+ "ambient_cb 0.3.1-nightly-2023-10-09",
+ "ambient_element_component 0.3.1-nightly-2023-10-09",
+ "ambient_friendly_id 0.3.1-nightly-2023-10-09",
+ "ambient_guest_bridge 0.3.1-nightly-2023-10-09",
+ "as-any",
+ "atomic_refcell",
+ "derivative",
+ "dyn-clonable",
+ "itertools",
+ "parking_lot",
+ "profiling",
+ "tracing",
+]
+
+[[package]]
+name = "ambient_element"
+version = "0.3.1-nightly-2023-10-20"
+source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-20#3ae08ca0aa789cfebaa0f4ebef4fe0753652d329"
+dependencies = [
+ "ambient_cb 0.3.1-nightly-2023-10-20",
+ "ambient_element_component 0.3.1-nightly-2023-10-20",
+ "ambient_friendly_id 0.3.1-nightly-2023-10-20",
+ "ambient_guest_bridge 0.3.1-nightly-2023-10-20",
  "as-any",
  "atomic_refcell",
  "derivative",
@@ -138,9 +247,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "ambient_element_component"
+version = "0.3.1-nightly-2023-10-20"
+source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-20#3ae08ca0aa789cfebaa0f4ebef4fe0753652d329"
+dependencies = [
+ "itertools",
+ "proc-macro2",
+ "quote",
+ "syn 1.0.109",
+]
+
+[[package]]
 name = "ambient_friendly_id"
 version = "0.3.1-nightly-2023-10-09"
 source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-09#0d4c2c9b7b10d700aced40b22e9551d952dedfb2"
+dependencies = [
+ "rand",
+]
+
+[[package]]
+name = "ambient_friendly_id"
+version = "0.3.1-nightly-2023-10-20"
+source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-20#3ae08ca0aa789cfebaa0f4ebef4fe0753652d329"
 dependencies = [
  "rand",
 ]
@@ -150,8 +278,18 @@ name = "ambient_guest_bridge"
 version = "0.3.1-nightly-2023-10-09"
 source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-09#0d4c2c9b7b10d700aced40b22e9551d952dedfb2"
 dependencies = [
- "ambient_api_core",
- "ambient_shared_types",
+ "ambient_api_core 0.3.1-nightly-2023-10-09",
+ "ambient_shared_types 0.3.1-nightly-2023-10-09",
+ "anyhow",
+]
+
+[[package]]
+name = "ambient_guest_bridge"
+version = "0.3.1-nightly-2023-10-20"
+source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-20#3ae08ca0aa789cfebaa0f4ebef4fe0753652d329"
+dependencies = [
+ "ambient_api_core 0.3.1-nightly-2023-10-20",
+ "ambient_shared_types 0.3.1-nightly-2023-10-20",
  "anyhow",
 ]
 
@@ -166,11 +304,44 @@ dependencies = [
 ]
 
 [[package]]
+name = "ambient_math"
+version = "0.3.1-nightly-2023-10-20"
+source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-20#3ae08ca0aa789cfebaa0f4ebef4fe0753652d329"
+dependencies = [
+ "glam",
+ "rand",
+ "serde",
+]
+
+[[package]]
 name = "ambient_package"
 version = "0.3.1-nightly-2023-10-09"
 source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-09#0d4c2c9b7b10d700aced40b22e9551d952dedfb2"
 dependencies = [
- "ambient_shared_types",
+ "ambient_shared_types 0.3.1-nightly-2023-10-09",
+ "chrono",
+ "convert_case",
+ "data-encoding",
+ "indexmap 2.0.2",
+ "once_cell",
+ "proc-macro2",
+ "quote",
+ "rand",
+ "semver",
+ "serde",
+ "sha2",
+ "syn 1.0.109",
+ "thiserror",
+ "toml",
+ "url",
+]
+
+[[package]]
+name = "ambient_package"
+version = "0.3.1-nightly-2023-10-20"
+source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-20#3ae08ca0aa789cfebaa0f4ebef4fe0753652d329"
+dependencies = [
+ "ambient_shared_types 0.3.1-nightly-2023-10-20",
  "chrono",
  "convert_case",
  "data-encoding",
@@ -193,9 +364,25 @@ name = "ambient_package_macro_common"
 version = "0.3.1-nightly-2023-10-09"
 source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-09#0d4c2c9b7b10d700aced40b22e9551d952dedfb2"
 dependencies = [
- "ambient_package",
- "ambient_package_semantic",
- "ambient_shared_types",
+ "ambient_package 0.3.1-nightly-2023-10-09",
+ "ambient_package_semantic 0.3.1-nightly-2023-10-09",
+ "ambient_shared_types 0.3.1-nightly-2023-10-09",
+ "anyhow",
+ "glam",
+ "proc-macro2",
+ "quote",
+ "serde",
+ "syn 1.0.109",
+]
+
+[[package]]
+name = "ambient_package_macro_common"
+version = "0.3.1-nightly-2023-10-20"
+source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-20#3ae08ca0aa789cfebaa0f4ebef4fe0753652d329"
+dependencies = [
+ "ambient_package 0.3.1-nightly-2023-10-20",
+ "ambient_package_semantic 0.3.1-nightly-2023-10-20",
+ "ambient_shared_types 0.3.1-nightly-2023-10-20",
  "anyhow",
  "glam",
  "proc-macro2",
@@ -209,7 +396,20 @@ name = "ambient_package_rt"
 version = "0.3.1-nightly-2023-10-09"
 source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-09#0d4c2c9b7b10d700aced40b22e9551d952dedfb2"
 dependencies = [
- "ambient_shared_types",
+ "ambient_shared_types 0.3.1-nightly-2023-10-09",
+ "byteorder",
+ "glam",
+ "paste",
+ "thiserror",
+ "ulid",
+]
+
+[[package]]
+name = "ambient_package_rt"
+version = "0.3.1-nightly-2023-10-20"
+source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-20#3ae08ca0aa789cfebaa0f4ebef4fe0753652d329"
+dependencies = [
+ "ambient_shared_types 0.3.1-nightly-2023-10-20",
  "byteorder",
  "glam",
  "paste",
@@ -222,11 +422,35 @@ name = "ambient_package_semantic"
 version = "0.3.1-nightly-2023-10-09"
 source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-09#0d4c2c9b7b10d700aced40b22e9551d952dedfb2"
 dependencies = [
- "ambient_dirs",
- "ambient_package",
- "ambient_schema",
- "ambient_shared_types",
- "ambient_std",
+ "ambient_dirs 0.3.1-nightly-2023-10-09",
+ "ambient_package 0.3.1-nightly-2023-10-09",
+ "ambient_schema 0.3.1-nightly-2023-10-09",
+ "ambient_shared_types 0.3.1-nightly-2023-10-09",
+ "ambient_std 0.3.1-nightly-2023-10-09",
+ "anyhow",
+ "async-recursion",
+ "data-encoding",
+ "glam",
+ "indexmap 2.0.2",
+ "paste",
+ "reqwest",
+ "semver",
+ "thiserror",
+ "toml",
+ "ulid",
+ "url",
+]
+
+[[package]]
+name = "ambient_package_semantic"
+version = "0.3.1-nightly-2023-10-20"
+source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-20#3ae08ca0aa789cfebaa0f4ebef4fe0753652d329"
+dependencies = [
+ "ambient_dirs 0.3.1-nightly-2023-10-20",
+ "ambient_package 0.3.1-nightly-2023-10-20",
+ "ambient_schema 0.3.1-nightly-2023-10-20",
+ "ambient_shared_types 0.3.1-nightly-2023-10-20",
+ "ambient_std 0.3.1-nightly-2023-10-20",
  "anyhow",
  "async-recursion",
  "data-encoding",
@@ -247,9 +471,26 @@ version = "0.3.1-nightly-2023-10-09"
 source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-09#0d4c2c9b7b10d700aced40b22e9551d952dedfb2"
 
 [[package]]
+name = "ambient_schema"
+version = "0.3.1-nightly-2023-10-20"
+source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-20#3ae08ca0aa789cfebaa0f4ebef4fe0753652d329"
+
+[[package]]
 name = "ambient_shared_types"
 version = "0.3.1-nightly-2023-10-09"
 source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-09#0d4c2c9b7b10d700aced40b22e9551d952dedfb2"
+dependencies = [
+ "bitflags 1.3.2",
+ "paste",
+ "serde",
+ "strum",
+ "ulid",
+]
+
+[[package]]
+name = "ambient_shared_types"
+version = "0.3.1-nightly-2023-10-20"
+source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-20#3ae08ca0aa789cfebaa0f4ebef4fe0753652d329"
 dependencies = [
  "bitflags 1.3.2",
  "paste",
@@ -268,9 +509,27 @@ dependencies = [
 ]
 
 [[package]]
+name = "ambient_std"
+version = "0.3.1-nightly-2023-10-20"
+source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-20#3ae08ca0aa789cfebaa0f4ebef4fe0753652d329"
+dependencies = [
+ "itertools",
+ "thiserror",
+]
+
+[[package]]
 name = "ambient_time"
 version = "0.3.1-nightly-2023-10-09"
 source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-09#0d4c2c9b7b10d700aced40b22e9551d952dedfb2"
+dependencies = [
+ "itertools",
+ "thiserror",
+]
+
+[[package]]
+name = "ambient_time"
+version = "0.3.1-nightly-2023-10-20"
+source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-20#3ae08ca0aa789cfebaa0f4ebef4fe0753652d329"
 dependencies = [
  "itertools",
  "thiserror",
@@ -281,13 +540,35 @@ name = "ambient_ui"
 version = "0.3.1-nightly-2023-10-09"
 source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-09#0d4c2c9b7b10d700aced40b22e9551d952dedfb2"
 dependencies = [
- "ambient_cb",
- "ambient_color",
- "ambient_element",
- "ambient_guest_bridge",
- "ambient_math",
- "ambient_shared_types",
- "ambient_time",
+ "ambient_cb 0.3.1-nightly-2023-10-09",
+ "ambient_color 0.3.1-nightly-2023-10-09",
+ "ambient_element 0.3.1-nightly-2023-10-09",
+ "ambient_guest_bridge 0.3.1-nightly-2023-10-09",
+ "ambient_math 0.3.1-nightly-2023-10-09",
+ "ambient_shared_types 0.3.1-nightly-2023-10-09",
+ "ambient_time 0.3.1-nightly-2023-10-09",
+ "convert_case",
+ "futures",
+ "glam",
+ "indexmap 2.0.2",
+ "itertools",
+ "parking_lot",
+ "rand",
+ "serde",
+]
+
+[[package]]
+name = "ambient_ui"
+version = "0.3.1-nightly-2023-10-20"
+source = "git+https://github.com/AmbientRun/Ambient.git?tag=v0.3.1-nightly-2023-10-20#3ae08ca0aa789cfebaa0f4ebef4fe0753652d329"
+dependencies = [
+ "ambient_cb 0.3.1-nightly-2023-10-20",
+ "ambient_color 0.3.1-nightly-2023-10-20",
+ "ambient_element 0.3.1-nightly-2023-10-20",
+ "ambient_guest_bridge 0.3.1-nightly-2023-10-20",
+ "ambient_math 0.3.1-nightly-2023-10-20",
+ "ambient_shared_types 0.3.1-nightly-2023-10-20",
+ "ambient_time 0.3.1-nightly-2023-10-20",
  "convert_case",
  "futures",
  "glam",
@@ -720,7 +1001,7 @@ dependencies = [
 name = "ghoul_frenzy"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.1-nightly-2023-10-20",
 ]
 
 [[package]]
@@ -2184,5 +2465,5 @@ checksum = "09041cd90cf85f7f8b2df60c646f853b7f535ce68f85244eb6731cf89fa498ec"
 name = "zombie_anims"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.1-nightly-2023-10-09",
 ]
