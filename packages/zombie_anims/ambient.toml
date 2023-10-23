@@ -3,7 +3,7 @@ id = "l7qgyikl7wwmkw4zflabf2pgak3qdro7"
 name = "zombie_anims"
 version = "0.0.1"
 content = { type = "Playable" }
-ambient_version = "0.3.1-nightly-2023-10-09"
+ambient_version = "0.3.1-nightly-2023-10-23"
 
 [dependencies]
 dead_meets_lead_content = { deployment = "5emfUlpXvbIAd7mZj2o2GE" }

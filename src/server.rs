@@ -105,9 +105,9 @@ pub fn main() {
         "Shrub1.x",
         "Shrub2.x",
         "Shrubbery1.x",
-        "Tallgrass1.x",
-        "Tallgrass2.x",
-        "Tallgrass3.x",
+        // "Tallgrass1.x",
+        // "Tallgrass2.x",
+        // "Tallgrass3.x",
     ];
     let stones = [
         "GravelStone1.x",
