@@ -182,8 +182,10 @@ pub fn main() {
             let id = cx.client_entity_id().unwrap();
             if has_component(hit.entity, health()) {
                 add_component(id, attack(), hit.entity);
+                remove_component(id, run_to());
             } else {
                 add_component(id, run_to(), hit.position);
+                remove_component(id, attack());
             }
         }
     });
