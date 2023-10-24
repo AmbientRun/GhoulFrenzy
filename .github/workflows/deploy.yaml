@@ -1,0 +1,22 @@
+
+name: Deploy to Ambient
+"on":
+  push:
+    branches:
+      - main
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          target: wasm32-unknown-unknown
+      - uses: Swatinem/rust-cache@v2
+      - uses: actions-rs/install@v0.1
+        with:
+          crate: ambient
+          version: latest
+          use-tool-cache: true
+      - run: ambient deploy --token ${{ secrets.AMBIENT_TOKEN }}
