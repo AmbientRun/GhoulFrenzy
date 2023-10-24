@@ -4,8 +4,10 @@ use ambient_api::{
     prelude::*,
 };
 use packages::{
-    dead_meets_lead_content::assets, game_object::components::health,
-    this::components::zombie_anims, unit::components::run_direction,
+    dead_meets_lead_content::assets,
+    game_object::components::health,
+    this::components::zombie_anims,
+    unit::components::{run_direction, shooting},
 };
 use std::{
     collections::HashMap,
@@ -44,7 +46,7 @@ pub fn main() {
 }
 
 #[element_component(without_el)]
-fn ZombieAnimation(_hooks: &mut Hooks, direction: Vec2, health: f32) -> Element {
+fn ZombieAnimation(_hooks: &mut Hooks, direction: Vec2, health: f32, shooting: bool) -> Element {
     AnimationPlayer {
         root: Transition {
             animations: vec![
@@ -54,6 +56,12 @@ fn ZombieAnimation(_hooks: &mut Hooks, direction: Vec2, health: f32) -> Element 
                 }
                 .el()
                 .key("death"),
+                PlayClipFromUrl {
+                    url: assets::url("Data/Models/Units/Zombie1.x/animations/MeleeThrust1.anim"),
+                    looping: true,
+                }
+                .el()
+                .key("attack"),
                 PlayClipFromUrl {
                     url: assets::url("Data/Models/Units/Zombie1.x/animations/Run1.anim"),
                     looping: true,
@@ -69,10 +77,12 @@ fn ZombieAnimation(_hooks: &mut Hooks, direction: Vec2, health: f32) -> Element 
             ],
             active: if health <= 0. {
                 0
-            } else if direction.length() > 0. {
+            } else if shooting {
                 1
-            } else {
+            } else if direction.length() > 0. {
                 2
+            } else {
+                3
             },
             speed: 0.3,
         }
@@ -85,6 +95,7 @@ impl ZombieAnimation {
         Self {
             direction: entity::get_component(entity, run_direction()).unwrap_or_default(),
             health: entity::get_component(entity, health()).unwrap_or(100.),
+            shooting: entity::get_component(entity, shooting()).unwrap_or(false),
         }
     }
 }

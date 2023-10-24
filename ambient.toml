@@ -7,7 +7,7 @@ ambient_version = "0.3.1-nightly-2023-10-23"
 
 [dependencies]
 dead_meets_lead_content = { deployment = "5emfUlpXvbIAd7mZj2o2GE" }
-zombie_anims = { path = "packages/zombie_anims" , deployment = "64QYzP5X7NwUSr6bEQxaJh" }
+zombie_anims = { path = "packages/zombie_anims", deployment = "oPXLzy1MbNxb5g8wnBUVZ" }
 unit = { deployment = "1vBEs82ZnSYQEuJjsT0eYh" }
 game_object = { deployment = "77lZ5MG77Hc0GOE5sXU3KG" }
 character_movement = { deployment = "1X5O7WXHcGDy2o9WUuRfkN" }
@@ -22,3 +22,4 @@ Click = { fields = { orig = "Vec3", dir = "Vec3" } }
 
 [components]
 run_to = { type = "Vec3", attributes = ["Networked", "Debuggable"] }
+attack = { type = "EntityId", attributes = ["Networked", "Debuggable"] }

@@ -1,3 +1,4 @@
+use crate::packages::{this::components::attack, unit::components::shooting};
 use ambient_api::{
     animation::{AnimationPlayerRef, PlayClipFromUrlNodeRef},
     animation_element::{AnimationPlayer, PlayClipFromUrl, Transition},
@@ -25,7 +26,10 @@ use ambient_api::{
             concepts::{Transformable, TransformableOptional},
         },
     },
-    entity::{add_child, add_component, add_components, remove_component, set_component},
+    entity::{
+        add_child, add_component, add_components, get_component, has_component, remove_component,
+        set_component,
+    },
     prelude::*,
 };
 use packages::{
@@ -44,7 +48,7 @@ pub fn main() {
         optional: PerspectiveInfiniteReverseCameraOptional {
             aspect_ratio_from_window: Some(entity::resources()),
             main_scene: Some(()),
-            translation: Some(Vec3::ONE * 5.),
+            translation: Some(vec3(1., 0., 1.) * 5.),
             ..default()
         },
         ..PerspectiveInfiniteReverseCamera::suggested()
@@ -77,7 +81,10 @@ pub fn main() {
 
     Entity::new()
         .with(sun(), 0.0)
-        .with(rotation(), Quat::from_rotation_y(-0.7))
+        .with(
+            rotation(),
+            Quat::from_rotation_y(-0.7) * Quat::from_rotation_z(0.3),
+        )
         .with(main_scene(), ())
         .with(light_diffuse(), 3. * ivec3(247, 250, 152).as_vec3() / 255.)
         .with(light_ambient(), 0.5 * ivec3(0, 106, 255).as_vec3() / 255.)
@@ -153,31 +160,13 @@ pub fn main() {
             spawn(tree)
         }
     }
+    create_zombie()
+        .with(translation(), vec3(2., 0., 0.))
+        .spawn();
 
     spawn_query(is_player()).bind(|players| {
         for (id, _) in players {
-            let zombie = Entity::new()
-                .with_merge(Transformable {
-                    local_to_world: Default::default(),
-                    optional: TransformableOptional {
-                        translation: Some(Vec3::Z * 1.),
-                        rotation: Some(Quat::IDENTITY),
-                        scale: None,
-                    },
-                })
-                .with(model_from_url(), assets::url("Data/Models/Units/Zombie1.x"))
-                .with(zombie_anims(), EntityId::null())
-                .with_merge(CharacterMovement {
-                    // optional: CharacterMovementOptional {
-                    //     run_speed_multiplier: Some(1.),
-                    //     speed: Some(1.),
-                    //     strafe_speed_multiplier: Some(1.),
-                    //     air_speed_multiplier: Some(1.),
-                    // },
-                    ..CharacterMovement::suggested()
-                })
-                .with(health(), 100.);
-            add_components(id, zombie);
+            add_components(id, create_zombie());
 
             // let idle = PlayClipFromUrlNodeRef::new(assets::url(
             //     "Data/Models/Units/Zombie1.x/animations/Run1.anim",
@@ -191,7 +180,31 @@ pub fn main() {
         if let Some(hit) = physics::raycast_first(ev.orig, ev.dir) {
             println!("hit: {:?}", hit);
             let id = cx.client_entity_id().unwrap();
-            add_component(id, run_to(), hit.position);
+            if has_component(hit.entity, health()) {
+                add_component(id, attack(), hit.entity);
+            } else {
+                add_component(id, run_to(), hit.position);
+            }
+        }
+    });
+
+    query((attack(), translation())).each_frame(|entities| {
+        for (id, (target, pos)) in entities {
+            let target_pos = get_component(target, translation()).unwrap_or_default();
+            let delta = target_pos - pos;
+            if delta.length() < 1.2 {
+                set_component(id, run_direction(), Vec2::ZERO);
+                add_component(id, shooting(), true);
+                set_component(target, health(), 0.);
+                println!("attack stop");
+            } else {
+                let dir = delta.normalize();
+                let rot = dir.y.atan2(dir.x);
+                set_component(id, run_direction(), Vec2::X);
+                set_component(id, rotation(), Quat::from_rotation_z(rot));
+                add_component(id, shooting(), false);
+                println!("attack go {}", delta.length());
+            }
         }
     });
 
@@ -209,6 +222,30 @@ pub fn main() {
             }
         }
     });
+}
+
+fn create_zombie() -> Entity {
+    Entity::new()
+        .with_merge(Transformable {
+            local_to_world: Default::default(),
+            optional: TransformableOptional {
+                translation: Some(Vec3::Z * 1.),
+                rotation: Some(Quat::IDENTITY),
+                scale: None,
+            },
+        })
+        .with(model_from_url(), assets::url("Data/Models/Units/Zombie1.x"))
+        .with(zombie_anims(), EntityId::null())
+        .with_merge(CharacterMovement {
+            // optional: CharacterMovementOptional {
+            //     run_speed_multiplier: Some(1.),
+            //     speed: Some(1.),
+            //     strafe_speed_multiplier: Some(1.),
+            //     air_speed_multiplier: Some(1.),
+            // },
+            ..CharacterMovement::suggested()
+        })
+        .with(health(), 100.)
 }
 
 // Trees:
